@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("api/coin")
+@RequestMapping("/api/coin")
 @Api(value = "/api/coin", description = "API service for coin king game")
 @ApiResponses(value = {
         @ApiResponse(code = 200, message = "Success"),
