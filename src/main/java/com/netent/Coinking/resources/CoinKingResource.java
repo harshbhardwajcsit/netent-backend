@@ -1,7 +1,7 @@
 package com.netent.Coinking.resources;
 
+import com.netent.Coinking.GameResponseEntity;
 import com.netent.Coinking.service.CoinkingService;
-import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +22,7 @@ public class CoinKingResource {
     private CoinkingService coinkingService;
 
     @GetMapping("/result")
-    public String getPlayerResult() throws Exception {
+    public GameResponseEntity getPlayerResult() throws Exception {
         return coinkingService.fetchResult();
     }
 
