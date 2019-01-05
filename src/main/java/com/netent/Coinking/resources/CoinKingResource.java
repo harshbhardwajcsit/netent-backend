@@ -1,6 +1,7 @@
 package com.netent.Coinking.resources;
 
-import com.netent.Coinking.GameResponseEntity;
+import com.netent.Coinking.response.entity.CommonResponse;
+import com.netent.Coinking.response.entity.GameResponseEntity;
 import com.netent.Coinking.service.CoinkingService;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
@@ -22,7 +23,7 @@ public class CoinKingResource {
     private CoinkingService coinkingService;
 
     @GetMapping("/result")
-    public GameResponseEntity getPlayerResult() throws Exception {
+    public CommonResponse getPlayerResult() throws Exception {
         return coinkingService.fetchResult();
     }
 

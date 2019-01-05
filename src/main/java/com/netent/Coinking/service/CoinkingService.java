@@ -1,7 +1,8 @@
 package com.netent.Coinking.service;
 
-import com.netent.Coinking.GameResponseEntity;
+import com.netent.Coinking.response.entity.CommonResponse;
+import com.netent.Coinking.response.entity.GameResponseEntity;
 
 public interface CoinkingService {
-    public GameResponseEntity fetchResult();
+    public CommonResponse fetchResult();
 }
