@@ -1,15 +1,21 @@
 package com.netent.Coinking.resources;
 
+import com.netent.Coinking.request.PlayerRecordSaveRequest;
 import com.netent.Coinking.response.entity.CommonResponse;
 import com.netent.Coinking.response.entity.GameResponseEntity;
 import com.netent.Coinking.service.CoinkingService;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import javax.validation.Valid;
 
 @RestController
 @CrossOrigin(origins = "*", allowedHeaders = "*")
@@ -27,6 +33,11 @@ public class CoinKingResource {
     @GetMapping("/result")
     public CommonResponse getPlayerResult() throws Exception {
         return coinkingService.fetchResult();
+    }
+
+    @PostMapping("/save/record")
+    public CommonResponse savePlayerData(@RequestBody @Valid PlayerRecordSaveRequest playerRecordSaveRequest) throws Exception {
+        return coinkingService.savePlayerData(playerRecordSaveRequest);
     }
 
 }
