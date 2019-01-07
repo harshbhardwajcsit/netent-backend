@@ -19,6 +19,7 @@ public class GameResponseEntity implements Serializable {
     @ApiModelProperty("status code for game result")
     private Integer gameCode;
 
+    @ApiModelProperty("is user gets free round")
     private Boolean isFreeRound;
 
     public GameResponseEntity(Integer result, Integer freeRound) {
@@ -26,6 +27,8 @@ public class GameResponseEntity implements Serializable {
         gameCode = result;
         if (freeRound == 1) {
             isFreeRound = true;
+        } else {
+            isFreeRound = false;
         }
     }
 }
