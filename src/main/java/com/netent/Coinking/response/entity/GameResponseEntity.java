@@ -6,8 +6,6 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
-import javax.annotation.sql.DataSourceDefinition;
-import javax.persistence.Entity;
 import java.io.Serializable;
 
 @Data
@@ -15,14 +13,19 @@ import java.io.Serializable;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class GameResponseEntity implements Serializable {
 
-    @ApiModelProperty("Game status(WIN,LOSS,FREE_ROUND)")
+    @ApiModelProperty("Game status(WIN,LOSS)")
     private String gameStatus;
 
     @ApiModelProperty("status code for game result")
     private Integer gameCode;
 
-    public GameResponseEntity(Integer randomInteger) {
-        gameStatus = GameRulesHelper.rules.get(randomInteger);
-        gameCode = randomInteger;
+    private Boolean isFreeRound;
+
+    public GameResponseEntity(Integer result, Integer freeRound) {
+        gameStatus = GameRulesHelper.rules.get(result);
+        gameCode = result;
+        if (freeRound == 1) {
+            isFreeRound = true;
+        }
     }
 }

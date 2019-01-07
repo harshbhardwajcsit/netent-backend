@@ -10,5 +10,4 @@ public class GameRulesHelper {
             .put(2, "WIN")
             .put(3, "LOST")
             .build();
-
 }

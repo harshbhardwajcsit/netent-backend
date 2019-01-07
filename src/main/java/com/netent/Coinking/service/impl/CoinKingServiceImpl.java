@@ -16,21 +16,8 @@ public class CoinKingServiceImpl implements CoinkingService {
     public CommonResponse fetchResult() {
         final int[] RATES = {2, 2, 2, 3, 3, 3, 3, 3, 3, 3};
         Random random = new Random();
-        int finalResult;
         int result = RATES[random.nextInt(RATES.length)];
-        if (result == 2) {
-            final int[] FREE_ROUND = {1, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-            int result2 = RATES[random.nextInt(FREE_ROUND.length)];
-            if (result2 == 1) {
-                finalResult = 1;
-            } else {
-                finalResult = 2;
-            }
-        } else {
-            finalResult = 3;
-        }
-
-        GameResponseEntity gameResponseEntity = new GameResponseEntity(finalResult);
+        GameResponseEntity gameResponseEntity = new GameResponseEntity(result, getFreeRound());
         return CommonResponse.success(null, gameResponseEntity);
     }
 
@@ -48,5 +35,11 @@ public class CoinKingServiceImpl implements CoinkingService {
     @Override
     public CommonResponse getPlayerData() {
         return null;
+    }
+
+    public int getFreeRound() {
+        final int[] RATES = {1, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+        Random random = new Random();
+        return RATES[random.nextInt(RATES.length)];
     }
 }
