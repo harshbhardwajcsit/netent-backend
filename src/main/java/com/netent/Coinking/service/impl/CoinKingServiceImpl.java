@@ -14,10 +14,7 @@ import java.util.Random;
 public class CoinKingServiceImpl implements CoinkingService {
     @Override
     public CommonResponse fetchResult() {
-        final int[] RATES = {2, 2, 2, 3, 3, 3, 3, 3, 3, 3};
-        Random random = new Random();
-        int result = RATES[random.nextInt(RATES.length)];
-        GameResponseEntity gameResponseEntity = new GameResponseEntity(result, getFreeRound());
+        GameResponseEntity gameResponseEntity = new GameResponseEntity(getGameResult(), getFreeRound());
         return CommonResponse.success(null, gameResponseEntity);
     }
 
@@ -37,8 +34,14 @@ public class CoinKingServiceImpl implements CoinkingService {
         return null;
     }
 
-    public int getFreeRound() {
+    private int getFreeRound() {
         final int[] RATES = {1, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+        Random random = new Random();
+        return RATES[random.nextInt(RATES.length)];
+    }
+
+    private int getGameResult() {
+        final int[] RATES = {2, 2, 2, 3, 3, 3, 3, 3, 3, 3};
         Random random = new Random();
         return RATES[random.nextInt(RATES.length)];
     }
