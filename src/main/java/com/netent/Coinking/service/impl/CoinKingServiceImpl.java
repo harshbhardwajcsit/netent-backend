@@ -18,22 +18,6 @@ public class CoinKingServiceImpl implements CoinkingService {
         return CommonResponse.success(null, gameResponseEntity);
     }
 
-    @Override
-    public CommonResponse savePlayerData(PlayerRecordSaveRequest recordSaveRequest) throws Exception {
-        PlayerModel playerModel = new PlayerModel();
-        playerModel.setName(recordSaveRequest.getName());
-        playerModel.setGameStatus(recordSaveRequest.getGameStatus());
-
-        MongoConfig mongoConfig = new MongoConfig();
-        mongoConfig.mongoOperations().save(playerModel, "playerDataTable");
-        return CommonResponse.success(null);
-    }
-
-    @Override
-    public CommonResponse getPlayerData() {
-        return null;
-    }
-
     private int getFreeRound() {
         final int[] RATES = {1, 0, 0, 0, 0, 0, 0, 0, 0, 0};
         Random random = new Random();

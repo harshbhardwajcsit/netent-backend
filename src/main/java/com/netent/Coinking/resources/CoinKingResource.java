@@ -34,10 +34,4 @@ public class CoinKingResource {
     public CommonResponse getPlayerResult() throws Exception {
         return coinkingService.fetchResult();
     }
-
-    @PostMapping("/save/record")
-    public CommonResponse savePlayerData(@RequestBody @Valid PlayerRecordSaveRequest playerRecordSaveRequest) throws Exception {
-        return coinkingService.savePlayerData(playerRecordSaveRequest);
-    }
-
 }
